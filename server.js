@@ -16,8 +16,6 @@ const timeLogger = (request, response, next) => {
 app.use(urlLogger, timeLogger);
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 app.get('/json', (request, response) => {
   // FROM EARLIER EXAMPLE
   // response.status(200).json({ "name": "Robbie" });
