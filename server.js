@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const randomJSON = require('./randomJSON.json');
 
 const urlLogger = (request, response, next) => {
   console.log('Request URL: ', request.url);
@@ -18,8 +19,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/json', (request, response) => {
+  // FROM EARLIER EXAMPLE
   // response.status(200).json({ "name": "Robbie" });
-  response.sendFile(__dirname + '/randomJSON.json');
+
+  // LESS CLEAN WAY
+  // response.sendFile(__dirname + '/randomJSON.json');
+
+  // BEST WAY
+  response.status(200).json(randomJSON);
 });
 
 app.get('/sunsets', (request, response) => {
